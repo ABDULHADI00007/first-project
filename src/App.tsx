@@ -2,13 +2,14 @@ import Header from "./pages/Header";
 import HeroSection from "./pages/HeroSection";
 import { OurServices } from "./pages/OurServices";
 import Contact from "./pages/Contact";
+import BookDemoButton from "./pages/components/BookDemoButton";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   return (
     <>
       {/* Header remains visible on all routes */}
-      
+      <BookDemoButton />
 
       {/* Route outlet - different pages rendered by react-router */}
       <Routes>

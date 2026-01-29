@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import property_1 from "../assets/property_2.jpg";
 import { OurServices } from "./OurServices";
 
+
 export function Bracket({
   side = "left",
   className = "",
@@ -42,6 +43,7 @@ function HeroSection() {
   const layer2 = useRef<HTMLDivElement | null>(null);
   const layer3 = useRef<HTMLDivElement | null>(null);
   const cardRef = useRef<HTMLDivElement | null>(null);
+  const costDescRef = useRef<HTMLDivElement | null>(null); // Ref for cost description paragraph
   const heroContentRef = useRef<HTMLDivElement | null>(null); // New ref for content to move up
   const headlineRef = useRef<HTMLDivElement | null>(null);
 
@@ -181,16 +183,44 @@ function HeroSection() {
           cardDelay
         );
 
-        // subtle fade while sliding
-        master.to(cardRef.current, { ease: "power1.out" }, cardDelay);
+        // === Phase 1: Layers spread (Cost card stays at y: 0) ===
+        // No animation for cardRef here - it stays in place like the image
 
+        // === Phase 2: Cost card moves VERTICALLY DOWN (ONLY after more scroll) ===
+        const costCardVerticalDelay = cardDelay + 1.2;
+        master.to(
+          cardRef.current,
+          { 
+            y: 350,  // Move down vertically ONLY
+            ease: "power1.out",
+            duration: 1
+          },
+          costCardVerticalDelay // After more scroll
+        );
+
+        // Cost description gets animation like the layers (rotate, spread)
+        master.to(
+          costDescRef.current,
+          {
+            x: cardSpacing * 1,  // Spread position like layer4
+            rotation: 0,  // Reset rotation
+            opacity: 1,
+            y: 0,
+            ease: "power1.out",
+            duration: 1.5,
+            
+          },
+          costCardVerticalDelay + 0.1  // Slight delay after card starts moving
+        );
+
+        // === Phase 3: Horizontal scroll continues (just like before) ===
         master.to(
           innerRef.current,
           {
             x: -horizontalDistance,
             ease: "power1.inOut",
           },
-          cardDelay + 0.9
+          costCardVerticalDelay + 1.5  // Start after Cost card moves
         );
       }
 
@@ -449,16 +479,27 @@ function HeroSection() {
                                 />
                                 <div className="absolute bottom-4 xl:bottom-8 left-4 xl:left-6 text-white">
                                   <div className="text-3xl xl:text-5xl font-bold mb-1">
-                                    +40%
+                                   Cost
                                   </div>
                                   <div className="text-sm xl:text-lg font-medium">
-                                    Lead-to-customer
+                                  Save-time-and 
                                   </div>
                                   <div className="text-sm xl:text-lg font-medium">
-                                    conversions
+                                    money
                                   </div>
                                 </div>
                               </div>
+                            </div>
+
+                            {/* Cost Description - appears when card moves down */}
+                            <div
+                              ref={costDescRef}
+                              className="absolute top-[395px] left-4 w-[200px] xl:w-[800px]  bg-[#BCBF4F] shadow-[0_20px_40px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1)]   rounded-2xl p-4 xl:p-8  z-0 opacity-0 text-left "
+                            >
+                              
+                              <p className="font-[poppins] font-light text-xs xl:text-xl  leading-relaxed tracking-wide ">
+                                NuHelixX RE saves both time and money by replacing multiple tools with one platform. Data being entered once and AI handling training, tagging, and follow-ups, agents cut hours of admin work every week — turning wasted time into more revenue and measurable cost savings.
+                              </p>
                             </div>
                           </div>
 
@@ -555,17 +596,17 @@ function HeroSection() {
                 <div ref={headlineRef} className="transform-gpu opacity-[0]">
                   <p>
                     <span className="text-[60px] sm:text-[80px] md:text-[100px] lg:text-[120px] font-[Duck-cry] leading-none font-[600]">
-                      YOUR <br />
-                      CRM <br />
+                     One <br />
+                      Subscription <br />
                       <div className="flex gap-2 sm:gap-4 items-center leading-none">
-                        <p>ON</p> <br />
+                        <p>All</p> <br />
                         <img
                           src="https://43675023.fs1.hubspotusercontent-na1.net/hubfs/43675023/raw_assets/public/ZipcioTheme/img/rocket.svg"
                           alt="Steroids"
                           className="h-[30px] sm:h-[40px] md:h-[50px] lg:h-[60px]"
                         />
                       </div>
-                      STEROIDS
+                     Features
                     </span>
                   </p>
                 </div>
@@ -573,9 +614,11 @@ function HeroSection() {
             </div>
           </div>
         </div>
+         
+
         {/* Second Screen */}
         <section className="w-full lg:w-screen bg-[#F5F5F5] min-h-[100vh] flex flex-col flex-shrink-0">
-          <OurServices/>
+          <OurServices />
         </section>
       </div>
     </main>

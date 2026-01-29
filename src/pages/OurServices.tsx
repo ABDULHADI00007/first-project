@@ -2,12 +2,15 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import UnsureServicesSuit from "./UnsureServicesSuit";
 import ClientTestimonial from "./ClientTestimonial";
+import ClientExperience from "./ClientExperience";
+import AnalyticsGrowth from "./AnalyticsGrowth";
 import FAQSection from "./Faqs";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import property_1 from "../assets/property_1.jpg";
 import property_2 from "../assets/property_2.jpg";
 import property_3 from "../assets/property_3.jpg";
+import AgentExperience from "./AgentExperience";
 
 type Service = {
   id: string;
@@ -428,6 +431,10 @@ export function OurServices() {
         </div>
         <UnsureServicesSuit />
         <ClientTestimonial />
+        <AgentExperience />
+        <ClientExperience />
+        <AnalyticsGrowth />
+
         <FAQSection />
         <Contact />
         <Footer />

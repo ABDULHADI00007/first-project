@@ -1,33 +1,51 @@
-import propert_1 from "../assets/property_1.jpg"
-import propert_2 from "../assets/property_2.jpg"
-import propert_3 from "../assets/property_3.jpg"
+import propert_1 from "../assets/property-1.png"
+import propert_2 from "../assets/property-2.png"
+import propert_3 from "../assets/property-3.png"
+import property_4 from "../assets/property-4.png"
+import property_5 from "../assets/property-5.png"
 
 
 const ClientTestimonial = () => {
   let TestimonialDiv = [
     {
-      id: 1,
+     
       name: "Performance ",
       company: "Visibility",
       logo: propert_1,
       testimonial:
-        "“AI guides new agents through daily tasks, reducing training time and accelerating productivity. Brokerages save money on onboarding while ensuring that agents deliver consistent results from their very first day in the system.”",
+        "“NuHelixX RE gives brokers a unified view of production, pipeline activity, compliancestatus, and agent performance across the entire organization. Leadership gains clarity without needing additional staff or manual reporting.”",
     },
     {
-      id: 2,
-      name: "Compliance & ",
+    
+      name: "AI Oversight ",
       company: "Security",
       logo: propert_2,
       testimonial:
-        "“NuHelixX records every step of the transaction and integrates with secure e-signature platforms. Brokerages protect their reputation, maintain regulatory compliance, and reduce costly risks with built-in transparency and accountability.”",
+      "“AI identifies risk, stalled deals, and performance   gaps early—helping brokers take proactive action instead of reacting too late.”",
     },
     {
-      id: 3,
-      name: "Lower Training",
+    
+      name: "Scalable Structure",
       company: " Costs",
       logo: propert_3,
       testimonial:
-        "“Brokers gain real-time dashboards that reveal agent activity, pipeline health, and commission tracking. Every deal is visible at a glance, helping leaders make informed decisions quickly and identify growth opportunities across the entire brokerage.”",
+        "“Support single offices, multi-office brokerages, teams, and hybrid org structures with controlled permissions and clear contact ownership rules.”",
+    },
+      {
+     
+      name: "Operational Efficiency",
+      company: " Costs",
+      logo: property_4,
+      testimonial:
+        "“Because NuHelixX RE automates administrative tasks, compliance reminders, pipeline updates, and data entry, brokerages reduce overhead while improving output.”",
+    },
+      {
+     
+      name: "One Platform for Growth",
+      company: " Costs",
+      logo: property_5,
+      testimonial:
+        "“Whether managing 5 agents or 500, NuHelixX RE scales seamlessly and eliminates theneed to invest in additional tools, assistants, or manual oversight systems.Agent Experience–Change all images to NuHelix ‘X’ or do a text transformation”",
     },
   ];
 
@@ -35,8 +53,8 @@ const ClientTestimonial = () => {
     <section className="min-h-[100vh] flex flex-col gap-[100px] lg:gap-[200px] mt-12">
       <div className="text-center mt-[40px] lg:mt-[70px]">
         <h1 className="font-[Duck-cry] leading-none text-[60px] sm:text-[80px] lg:text-[120px]">
-          CLIENT <br />
-          TESTIMONIAL
+         BROKAGE  <br />
+          EXPERIENCE
         </h1>
       </div>
       <div>
